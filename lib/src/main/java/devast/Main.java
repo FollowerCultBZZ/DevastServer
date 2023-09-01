@@ -1,10 +1,9 @@
 package devast;
 
-import devast.server.Server;
+import com.badlogic.gdx.backends.headless.HeadlessApplication;
 
 public class Main {
 	public static void main(String[] args) {
-		Server server = new Server(8080);
-		server.start();
+		new HeadlessApplication(new ServerListener());
 	}
 }

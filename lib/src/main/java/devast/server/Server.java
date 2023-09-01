@@ -5,6 +5,7 @@ import java.net.InetSocketAddress;
 import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
+import org.json.JSONArray;
 
 public class Server extends WebSocketServer {
 
@@ -14,7 +15,6 @@ public class Server extends WebSocketServer {
 	
 	@Override
 	public void onOpen(WebSocket conn, ClientHandshake handshake) {
-		System.out.println(conn.getLocalSocketAddress());
 	}
 
 	@Override
@@ -23,6 +23,11 @@ public class Server extends WebSocketServer {
 
 	@Override
 	public void onMessage(WebSocket conn, String message) {
+		JSONArray array = new JSONArray(message);
+		
+		switch ((Integer)array.get(0)) {
+		case 30: PacketLoader.firstMessagePacket.read(conn, array);
+		}
 	}
 
 	@Override

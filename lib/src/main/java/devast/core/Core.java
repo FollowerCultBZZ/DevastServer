@@ -1,5 +1,11 @@
 package devast.core;
 
+import devast.server.Server;
+import devast.world.World;
+
 public class Core {
-	public static int port = 8080;
+	
+	public static World world;
+	
+	public static Server server;
 }
